@@ -14,7 +14,7 @@ namespace SceneManagement
         
         [SerializeField] private int sceneToLoad = -1;
         [SerializeField] private Transform spawnPoint = null;
-        [SerializeField] private DestinationIdentifier destination;
+        [SerializeField] private DestinationIdentifier? destination = null;
         [SerializeField] private float fadeOutTime = .5f;
         [SerializeField] private float fadeInTime = 1f;
         [SerializeField] private float fadeWaitTime = .5f;

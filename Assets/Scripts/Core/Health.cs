@@ -25,7 +25,6 @@ namespace Core
             if (health <= 0) return;
             
             health -= amount;
-            print(health);
             Die();            
             // health = Mathf.Max(health - amount, 0);  does the same thing
         }

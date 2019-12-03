@@ -55,6 +55,11 @@
               </e>
             </e>
           </e>
+          <e p="SimpleFX" t="Include">
+            <e p="Materials" t="Include">
+              <e p="UnlitVertexColour_Alpha.shader" t="Include" />
+            </e>
+          </e>
           <e p="Synty - Polygon Student Sample" t="Include">
             <e p="README - Usage Rights for these assets.txt" t="Include" />
           </e>
@@ -67,6 +72,7 @@
           <e p="Combat" t="Include">
             <e p="CombatTarget.cs" t="Include" />
             <e p="Fighter.cs" t="Include" />
+            <e p="Projectile.cs" t="Include" />
             <e p="Weapon.cs" t="Include" />
             <e p="WeaponPickup.cs" t="Include" />
           </e>
@@ -78,6 +84,7 @@
           <e p="Core" t="Include">
             <e p="ActionScheduler.cs" t="Include" />
             <e p="CameraMotor.cs" t="Include" />
+            <e p="DestroyAfterEffect.cs" t="Include" />
             <e p="Health.cs" t="Include" />
             <e p="IAction.cs" t="Include" />
             <e p="PersistentObjectSpawner.cs" t="Include" />

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Core;
+using UnityEngine;
 
 namespace Combat
 {
@@ -10,7 +11,10 @@ namespace Combat
         [SerializeField] private float weaponRange = 2f;
         [SerializeField] private float damageAmount = 5f;
         [SerializeField] private bool isRightHanded = true;
+        [SerializeField] private Projectile projectile = null;
 
+        private const string WeaponName = "Weapon";
+        
         public float GetRange()
         {
             return weaponRange;
@@ -21,21 +25,66 @@ namespace Combat
             return damageAmount;
         }
 
+        public bool HasProjectile()
+        {
+            return projectile != null;
+        }
+
+        public void LaunchProjectile(Transform rightHand, Transform leftHand, Health target)
+        {
+            Projectile projectileInstance = Instantiate(
+                projectile, 
+                GetTransform(rightHand, leftHand).position,
+                Quaternion.identity
+                );
+            projectileInstance.SetTarget(target, damageAmount);
+        }
+
         public void Spawn(Transform rightHand, Transform leftHand, Animator animator)
         {
+            DestroyOldWeapon(rightHand, leftHand);
+            
             if (equippedPrefab != null)
             {
-                Transform handTransform;
-                if (isRightHanded)
-                    handTransform = rightHand;
-                else
-                    handTransform = leftHand;
-                
-                Instantiate(equippedPrefab, handTransform);
+                var handTransform = GetTransform(rightHand, leftHand);
+                var weapon = Instantiate(equippedPrefab, handTransform);
+                weapon.name = WeaponName;
             }
+            var overrideController = animator.runtimeAnimatorController as AnimatorOverrideController;
 
             if (animatorOverride != null)
+            {
                 animator.runtimeAnimatorController = animatorOverride;
+            }
+            else if (overrideController != null)
+            {
+                animator.runtimeAnimatorController = overrideController.runtimeAnimatorController;
+            }
+        }
+
+        private void DestroyOldWeapon(Transform rightHand, Transform leftHand)
+        {
+            Transform oldWeapon = rightHand.Find(WeaponName);
+
+            if (oldWeapon == null)
+            {
+                oldWeapon = leftHand.Find(WeaponName);
+            }
+
+            if (oldWeapon == null) return;
+
+            oldWeapon.name = "Destroying";
+            Destroy(oldWeapon.gameObject);
+        }
+
+        private Transform GetTransform(Transform rightHand, Transform leftHand)
+        {
+            Transform handTransform;
+            if (isRightHanded)
+                handTransform = rightHand;
+            else
+                handTransform = leftHand;
+            return handTransform;
         }
     }
 
