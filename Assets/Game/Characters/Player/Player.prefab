@@ -27,6 +27,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
+--- !u!114 &5559135192948964075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030272362056243322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecba0c4d31374b12a62baf81b40cfd2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  experiencePoint: 0
 --- !u!1001 &7198987602881991340
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34,6 +47,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 323644205571667042, guid: d959ff2881043c342ac9514f9478714c,
+        type: 3}
+      propertyPath: characterClass
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2286177416717742697, guid: d959ff2881043c342ac9514f9478714c,
         type: 3}
       propertyPath: m_IsKinematic

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Control;
 using Core;
+using Resources;
 using UnityEditorInternal;
 using UnityEngine;
 
@@ -16,7 +17,8 @@ namespace Combat
         [SerializeField] private float lifeAfterImpact = 2f;
         [SerializeField] private GameObject hitEffect = null;
         [SerializeField] private GameObject[] destroyOnHit = null;
-        
+
+        private GameObject _instigator = null;
         private Health _target = null;
         private float _damage = 0f;
 
@@ -37,11 +39,11 @@ namespace Combat
             transform.Translate(Time.deltaTime * projectileSpeed * Vector3.forward);
         }
 
-        public void SetTarget(Health target, float damage)
+        public void SetTarget(Health target, GameObject instigator, float damage)
         {
             _target = target;
             _damage = damage;
-            
+            _instigator = instigator;
             Destroy(gameObject, maxLifeTime);
         }
         
@@ -59,7 +61,7 @@ namespace Combat
         {
             if (other.GetComponent<Health>() != _target) return;
             if (_target.IsDead()) return;
-            _target.TakeDamage(_damage);
+            _target.TakeDamage(_instigator, _damage);
 
             //projectileSpeed = 0f; TODO try why is this necessary
             

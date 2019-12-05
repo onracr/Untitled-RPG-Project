@@ -1,6 +1,7 @@
 using Core;
 using UnityEngine;
 using Movement;
+using Resources;
 using Saving;
 
 namespace Combat
@@ -54,6 +55,11 @@ namespace Combat
             weapon.Spawn(rightHandTransform, leftHandTransform, _animator);
         }
 
+        public Health GetTarget()
+        {
+            return _target;
+        }
+
         public void AttackBehaviour()
         {
             transform.LookAt(_target.transform);
@@ -105,11 +111,11 @@ namespace Combat
 
             if (_currentWeapon.HasProjectile())
             {
-                _currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, _target);
+                _currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, _target, gameObject);
             }
             else
             {
-                _target.TakeDamage(_currentWeapon.GetDamage());   
+                _target.TakeDamage(gameObject, _currentWeapon.GetDamage());   
             }
         }
 
@@ -126,7 +132,7 @@ namespace Combat
         public void RestoreState(object state)
         {
             string weaponName = (string) state;
-            Weapon weapon = Resources.Load<Weapon>(weaponName);
+            Weapon weapon = UnityEngine.Resources.Load<Weapon>(weaponName);
             EquipWeapon(weapon);
         }
     }

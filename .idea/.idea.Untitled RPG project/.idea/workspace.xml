@@ -8,28 +8,39 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Untitled RPG Project" />
+  </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Stats/BaseStats.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Combat/Weapon.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Combat/Projectile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Combat/EnemyHealthDisplay.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SceneManagement/Portal.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Cinematic/CinematicControlRemover.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Resources/Health.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/PersistentObjectSpawner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Resources/Experience.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Control/AiController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/IAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/CameraMotor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Stats/Stats.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Combat/CombatTarget.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/DestroyAfterEffect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Stats/Progression.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Combat/Fighter.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Combat/Weapon.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Control/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Combat/Projectile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Movement/Mover.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SceneManagement/SavingWrapper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SceneManagement/Fader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Saving/ISaveable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/ActionScheduler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SceneManagement/Portal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Combat/WeaponPickup.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Cinematic/CinematicControlRemover.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Saving/SavingSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Saving/SerializableVector3.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/PersistentObjectSpawner.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Control/AiController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/IAction.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Health.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Resources/HealthDisplay.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Stats/CharacterClass.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Resources/ExperienceDisplay.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Saving/SaveableEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Control/PatrolPath.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Cinematic/CinematicTrigger.cs" root0="FORCE_HIGHLIGHTING" />
@@ -42,10 +53,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Core/CameraMotor.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Combat/Health.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Control/AIController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Combat/CombatTarget.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Core/ActionScheduler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Control/PatrolPath.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Control/AiController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Cinematics/CinematicTrigger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Cinematic/CinematicTrigger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Cinematic/FakePlayableDirector.cs" />
@@ -54,19 +63,32 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Core/PersistentObjectSpawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Saving/SerializableVector3.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Saving/ISaveable.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Movement/Mover.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Saving/SaveableEntity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Saving/SavingSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Saving/SavingWrapper.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/Fader.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/SavingWrapper.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/Portal.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Core/Health.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Combat/Projectile.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Core/DestroyAfterEffect.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Combat/WeaponPickup.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Stats/CharacterClass.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Core/Health.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Control/AiController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Combat/CombatTarget.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Movement/Mover.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Resources/HealthDisplay.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Combat/HealthDisplay.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Combat/Projectile.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Combat/Weapon.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Combat/Fighter.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Combat/WeaponPickup.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Resources/Experince.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Combat/EnemyHealthDisplay.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Stats/Stats.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Stats/BaseStats.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Resources/Health.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Resources/Experience.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Resources/ExperienceDisplay.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Stats/Progression.cs" />
       </list>
     </option>
   </component>
@@ -134,6 +156,8 @@
       <workItem from="1574938476847" duration="7195000" />
       <workItem from="1575197599390" duration="11390000" />
       <workItem from="1575363780362" duration="17707000" />
+      <workItem from="1575460883307" duration="1181000" />
+      <workItem from="1575537926730" duration="20854000" />
     </task>
     <servers />
   </component>

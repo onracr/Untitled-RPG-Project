@@ -4,7 +4,6 @@
     <e p="C:\Users\user\.Rider2019.2\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\user\.Rider2019.2\system\resharper-host\Local\Transient\ReSharperHost\v192\SolutionCaches\_Untitled RPG project.-1873179103.00" t="ExcludeRecursive" />
     <e p="C:\Users\user\Documents\Repos\Unity3D\Projects\Untitled RPG project" t="IncludeRecursive">
-      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Asset Packs" t="Include">
@@ -17,41 +16,6 @@
                 <e p="Shaders" t="Include">
                   <e p="Skybox Cubemap Extended.shader" t="Include" />
                 </e>
-              </e>
-            </e>
-            <e p="Utils" t="Include">
-              <e p="CGIncludes" t="Include">
-                <e p="VS_indirect.cginc" t="Include" />
-              </e>
-              <e p="Editor" t="Include">
-                <e p="BConst.cs" t="Include" />
-                <e p="BEditorGUI.cs" t="Include" />
-                <e p="BEditorUtils.cs" t="Include" />
-                <e p="BVersion.cs" t="Include" />
-              </e>
-              <e p="PropertyDrawers" t="Include">
-                <e p="BCategoryAttribute.cs" t="Include" />
-                <e p="BInteractiveAttribute.cs" t="Include" />
-                <e p="BMessageAttribute.cs" t="Include" />
-                <e p="BRangeOptionsAttribute.cs" t="Include" />
-                <e p="BRangeSimpleAttribute.cs" t="Include" />
-                <e p="Editor" t="Include">
-                  <e p="BBannerDrawer.cs" t="Include" />
-                  <e p="BCategoryAttributeDrawer.cs" t="Include" />
-                  <e p="BCategoryDrawer.cs" t="Include" />
-                  <e p="BInteractiveAttributeDrawer.cs" t="Include" />
-                  <e p="BInteractiveDrawer.cs" t="Include" />
-                  <e p="BMessageAttributeDrawer.cs" t="Include" />
-                  <e p="BMessageDrawer.cs" t="Include" />
-                  <e p="BRangeOptionsAttributeDrawer.cs" t="Include" />
-                  <e p="BRangeSimpleAttributeDrawer.cs" t="Include" />
-                </e>
-              </e>
-              <e p="Shaders" t="Include">
-                <e p="SimpleLit Prototype Terrain.shader" t="Include" />
-                <e p="StandardLit Prototype Terrain.shader" t="Include" />
-                <e p="Unlit Prototype Ground.shader" t="Include" />
-                <e p="Unlit Prototype Skybox.shader" t="Include" />
               </e>
             </e>
           </e>
@@ -71,6 +35,7 @@
           </e>
           <e p="Combat" t="Include">
             <e p="CombatTarget.cs" t="Include" />
+            <e p="EnemyHealthDisplay.cs" t="Include" />
             <e p="Fighter.cs" t="Include" />
             <e p="Projectile.cs" t="Include" />
             <e p="Weapon.cs" t="Include" />
@@ -85,12 +50,17 @@
             <e p="ActionScheduler.cs" t="Include" />
             <e p="CameraMotor.cs" t="Include" />
             <e p="DestroyAfterEffect.cs" t="Include" />
-            <e p="Health.cs" t="Include" />
             <e p="IAction.cs" t="Include" />
             <e p="PersistentObjectSpawner.cs" t="Include" />
           </e>
           <e p="Movement" t="Include">
             <e p="Mover.cs" t="Include" />
+          </e>
+          <e p="Resources" t="Include">
+            <e p="Experience.cs" t="Include" />
+            <e p="ExperienceDisplay.cs" t="Include" />
+            <e p="Health.cs" t="Include" />
+            <e p="HealthDisplay.cs" t="Include" />
           </e>
           <e p="Saving" t="Include">
             <e p="ISaveable.cs" t="Include" />
@@ -102,6 +72,12 @@
             <e p="Fader.cs" t="Include" />
             <e p="Portal.cs" t="Include" />
             <e p="SavingWrapper.cs" t="Include" />
+          </e>
+          <e p="Stats" t="Include">
+            <e p="BaseStats.cs" t="Include" />
+            <e p="CharacterClass.cs" t="Include" />
+            <e p="Progression.cs" t="Include" />
+            <e p="Stats.cs" t="Include" />
           </e>
         </e>
       </e>
