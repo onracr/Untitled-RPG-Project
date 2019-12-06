@@ -24,7 +24,7 @@ namespace Combat
                 return;
             }
             var health = _fighter.GetTarget();
-            enemyHealthText.text = $"{health.GetPercentage():0}%";
+            enemyHealthText.text = $"{health.GetHealthPoints():0}/{health.GetMaxHealthPoints():0}";
         }
     }
 }

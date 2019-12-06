@@ -3,6 +3,7 @@ using UnityEngine;
 using Movement;
 using Resources;
 using Saving;
+using Stats;
 
 namespace Combat
 {
@@ -24,9 +25,9 @@ namespace Combat
 
         private void Awake()
         {
+            _animator = GetComponent<Animator>();
             _mover = GetComponent<Mover>();
             _actionScheduler = GetComponent<ActionScheduler>();
-            _animator = GetComponent<Animator>();
 
             if (_currentWeapon == null)
                 EquipWeapon(defaultWeapon);
@@ -109,13 +110,14 @@ namespace Combat
         {
             if (_target == null) return;
 
+            var damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
             if (_currentWeapon.HasProjectile())
             {
-                _currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, _target, gameObject);
+                _currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, _target, gameObject, damage);
             }
             else
             {
-                _target.TakeDamage(gameObject, _currentWeapon.GetDamage());   
+                _target.TakeDamage(gameObject, damage);   
             }
         }
 

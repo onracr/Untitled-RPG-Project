@@ -8,6 +8,8 @@ namespace Resources
 {
     public class Health : MonoBehaviour, ISaveable
     {
+        [SerializeField] private float regenerationPercentage = 70f;
+        
         private float _health = -1f;
 
         // Cached Reference
@@ -21,14 +23,17 @@ namespace Resources
             _animator = GetComponent<Animator>();
             _actionScheduler = GetComponent<ActionScheduler>();
 
+            GetComponent<BaseStats>().OnLevelUp += RegenerateHealth;
+            
             if (_health < 0)
                 _health = GetComponent<BaseStats>().GetStat(Stat.Health);
         }
 
-        public void TakeDamage(GameObject instigator, float amount)
+         public void TakeDamage(GameObject instigator, float amount)
         {
+            print(gameObject.name + " took damage:" + amount);
+            
             _health = Mathf.Max(_health - amount, 0);
-            //health -= amount;
 
             if (_health == 0)
             {
@@ -37,9 +42,19 @@ namespace Resources
             }
         }
 
+         public float GetHealthPoints()
+         {
+             return _health;
+         }
+
+         public float GetMaxHealthPoints()
+         {
+             return GetComponent<BaseStats>().GetStat(Stat.Health);
+         }
+         
+
         public float GetPercentage()
         {
-            print(_health);
             return 100 * (_health / GetComponent<BaseStats>().GetStat(Stat.Health));
         }
 
@@ -60,6 +75,12 @@ namespace Resources
             if (experience == null) return;
 
             experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.ExperienceReward));
+        }
+        
+        private void RegenerateHealth()
+        {
+            var regenHealthPoints = GetComponent<BaseStats>().GetStat(Stat.Health) * (regenerationPercentage / 100);
+            _health = Mathf.Max(_health, regenHealthPoints);
         }
 
         public bool IsDead()

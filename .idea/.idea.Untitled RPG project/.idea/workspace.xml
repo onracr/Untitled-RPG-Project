@@ -34,6 +34,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Control/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Movement/Mover.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SceneManagement/SavingWrapper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SceneManagement.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SceneManagement/Fader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Saving/ISaveable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/ActionScheduler.cs" root0="FORCE_HIGHLIGHTING" />
@@ -76,24 +77,24 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Movement/Mover.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Combat/HealthDisplay.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Combat/Projectile.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Combat/Weapon.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Combat/Fighter.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Resources/Experince.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Combat/EnemyHealthDisplay.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Resources/Experience.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Resources/ExperienceDisplay.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Resources/HealthDisplay.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Stats/Experience.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Stats/ExperienceDisplay.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Stats/Stats.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Stats/Progression.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Saving/SaveableEntity.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Stats/ExperienceDisplay1.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Stats/LevelDısplay.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Resources/Health.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/SavingWrapper.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Saving/SavingSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SceneManagement/SavingWrapper.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Stats/Experience.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Stats/BaseStats.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Combat/Weapon.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Resources/Health.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Resources/HealthDisplay.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Combat/EnemyHealthDisplay.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Stats/Stats.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Combat/Fighter.cs" />
       </list>
     </option>
   </component>
@@ -163,7 +164,7 @@
       <workItem from="1575363780362" duration="17707000" />
       <workItem from="1575460883307" duration="1181000" />
       <workItem from="1575537926730" duration="21154000" />
-      <workItem from="1575623415382" duration="6902000" />
+      <workItem from="1575623415382" duration="15295000" />
     </task>
     <servers />
   </component>
