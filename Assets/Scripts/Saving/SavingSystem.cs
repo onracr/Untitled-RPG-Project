@@ -37,6 +37,11 @@ namespace Saving
             RestoreState(LoadFile(saveFile));
         }
 
+        public void Delete(string saveFile)
+        {
+            File.Delete(GetPathFromSaveFile(saveFile));
+        }
+
         private void SaveFile(string saveFile, object captureState)
         {
             var path = GetPathFromSaveFile(saveFile);
@@ -88,28 +93,5 @@ namespace Saving
         {
             return Path.Combine(Application.persistentDataPath, saveFile + ".sav");
         }
-
-    /*    private byte[] SerializeVector(Vector3 vector)
-        {
-            byte[] vectorBytes = new byte[3 * 4];
-            BitConverter.GetBytes(vector.x).CopyTo(vectorBytes, 0);
-            BitConverter.GetBytes(vector.y).CopyTo(vectorBytes, 4);
-            BitConverter.GetBytes(vector.z).CopyTo(vectorBytes, 8);
-
-            return vectorBytes;
-        }
-
-        private Vector3 DeserializeVector(byte[] buffer)
-        {
-            var result = new Vector3
-            {
-                x = BitConverter.ToSingle(buffer, 0),
-                y = BitConverter.ToSingle(buffer, 4),
-                z = BitConverter.ToSingle(buffer, 8)
-            };
-
-            return result;
-        }
-    */
     }
 }

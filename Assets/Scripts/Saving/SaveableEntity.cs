@@ -27,7 +27,6 @@ namespace Saving
         public void RestoreState(object state)
         {
             Dictionary<string, object> stateDict = (Dictionary<string, object>) state;
-            print(stateDict.Count);
             foreach (var saveable in GetComponents<ISaveable>())
             {
                 string typeString = saveable.GetType().ToString();

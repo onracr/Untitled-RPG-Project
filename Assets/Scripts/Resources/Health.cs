@@ -8,7 +8,7 @@ namespace Resources
 {
     public class Health : MonoBehaviour, ISaveable
     {
-        [SerializeField] private float health = 100f;
+        private float _health = -1f;
 
         // Cached Reference
         private Animator _animator;
@@ -21,15 +21,16 @@ namespace Resources
             _animator = GetComponent<Animator>();
             _actionScheduler = GetComponent<ActionScheduler>();
 
-            health = GetComponent<BaseStats>().GetStat(Stat.Health);
+            if (_health < 0)
+                _health = GetComponent<BaseStats>().GetStat(Stat.Health);
         }
 
         public void TakeDamage(GameObject instigator, float amount)
         {
-            health = Mathf.Max(health - amount, 0);
+            _health = Mathf.Max(_health - amount, 0);
             //health -= amount;
 
-            if (health == 0)
+            if (_health == 0)
             {
                 Die();
                 AwardExperience(instigator);
@@ -38,13 +39,14 @@ namespace Resources
 
         public float GetPercentage()
         {
-            return 100 * (health / GetComponent<BaseStats>().GetStat(Stat.Health));
+            print(_health);
+            return 100 * (_health / GetComponent<BaseStats>().GetStat(Stat.Health));
         }
 
         private void Die()
         {
             if (_isDead) return;
-            if (health <= 0)
+            if (_health <= 0)
             {
                 GetComponent<Animator>().SetTrigger("die");
                 GetComponent<ActionScheduler>().CancelCurrentAction();
@@ -67,14 +69,14 @@ namespace Resources
 
         public object CaptureState()
         {
-            return health;
+            return _health;
         }
 
         public void RestoreState(object state)
         {
-            health = (float) state;
+            _health = (float) state;
             
-            if (health <= 0)
+            if (_health <= 0)
                 Die();
         }
     }
