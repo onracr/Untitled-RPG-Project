@@ -2,6 +2,7 @@
 using System.Collections;
 using Combat;
 using Core;
+using GameDevTV.Utils;
 using Movement;
 using Resources;
 using UnityEngine;
@@ -28,17 +29,28 @@ namespace Control
 
         private const float SuspicionTime = 3f;
         private int _currentWayPointIndex = 0;
-        private Vector3 _guardingPosition;
+        private LazyValue<Vector3> _guardingPosition;
 
-        private void Start()
+        private void Awake()
         {
-            _guardingPosition = transform.position;
             _player = GameObject.FindWithTag("Player");
             _fighter = GetComponent<Fighter>();
             _health = GetComponent<Health>();
             _mover = GetComponent<Mover>();
             _actionScheduler = GetComponent<ActionScheduler>();
+
+            _guardingPosition = new LazyValue<Vector3>(GetGuardingPosition);
         }
+
+        private Vector3 GetGuardingPosition()
+        {
+            return transform.position;
+        }
+
+        private void Start()
+        {
+            _guardingPosition.ForceInit();
+        } 
 
         private void Update()
         {
@@ -84,7 +96,7 @@ namespace Control
 
         private void PatrolBehaviour()
         {
-            var nextPosition = _guardingPosition;
+            var nextPosition = _guardingPosition.value;
             if (patrolPath != null)
             {
                 if (IsAtWayPoint())

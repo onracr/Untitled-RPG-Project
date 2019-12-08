@@ -14,6 +14,7 @@ namespace Saving
         public IEnumerator LoadLastScene(string saveFile)
         {
             Dictionary<string, object> state = LoadFile(saveFile);
+
             if (state.ContainsKey("lastSceneBuildIndex"))
             {
                 int buildIndex = (int) state["lastSceneBuildIndex"];

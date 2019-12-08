@@ -11,6 +11,7 @@ namespace Combat
         [SerializeField] private AnimatorOverrideController animatorOverride = null;
         [SerializeField] private float weaponRange = 2f;
         [SerializeField] private float damageAmount = 5f;
+        [SerializeField] private float percentageBonus = 0f;
         [SerializeField] private bool isRightHanded = true;
         [SerializeField] private Projectile projectile = null;
 
@@ -24,6 +25,11 @@ namespace Combat
         public float GetDamage()
         {
             return damageAmount;
+        }
+
+        public float GetPercentageBonus()
+        {
+            return percentageBonus;
         }
 
         public bool HasProjectile()

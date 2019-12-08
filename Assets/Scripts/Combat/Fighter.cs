@@ -4,10 +4,13 @@ using Movement;
 using Resources;
 using Saving;
 using Stats;
+using System.Collections.Generic;
+using GameDevTV.Utils;
+using System;
 
 namespace Combat
 {
-    public class Fighter : MonoBehaviour, IAction, ISaveable
+    public class Fighter : MonoBehaviour, IAction, ISaveable, IModifierProvider
     {
         [SerializeField] private float timeBetweenAttacks = 1f;
         [SerializeField] private Transform rightHandTransform = null;
@@ -21,16 +24,26 @@ namespace Combat
         private Mover _mover;
         private ActionScheduler _actionScheduler;
         private Animator _animator;
-        private Weapon _currentWeapon = null;
+        private LazyValue<Weapon> _currentWeapon;
 
         private void Awake()
         {
+            _currentWeapon = new LazyValue<Weapon>(SetupDefaultWeapon);
+
             _animator = GetComponent<Animator>();
             _mover = GetComponent<Mover>();
             _actionScheduler = GetComponent<ActionScheduler>();
+        }
 
-            if (_currentWeapon == null)
-                EquipWeapon(defaultWeapon);
+        private Weapon SetupDefaultWeapon()
+        {
+            AttachWeapon(defaultWeapon);
+            return defaultWeapon;
+        }
+
+        private void Start()
+        {
+            _currentWeapon.ForceInit();
         }
 
         private void Update()
@@ -52,8 +65,14 @@ namespace Combat
         }
         public void EquipWeapon(Weapon weapon)
         {
-            _currentWeapon = weapon;
-            weapon.Spawn(rightHandTransform, leftHandTransform, _animator);
+            _currentWeapon.value = weapon;
+            AttachWeapon(weapon);
+        }
+
+        private void AttachWeapon(Weapon weapon)
+        {
+            var animator = GetComponent<Animator>();
+            weapon.Spawn(rightHandTransform, leftHandTransform, animator);
         }
 
         public Health GetTarget()
@@ -77,9 +96,8 @@ namespace Combat
 
         private bool IsInRange()
         {
-            return Vector3.Distance(transform.position, _target.transform.position) <= _currentWeapon.GetRange();
+            return Vector3.Distance(transform.position, _target.transform.position) <= _currentWeapon.value.GetRange();
         }
-        
 
         public void AttackTo(GameObject target)
         {
@@ -105,15 +123,31 @@ namespace Combat
             _mover.Cancel();
         }
 
+        public IEnumerable<float> GetAdditiveModifiers(Stat stat)
+        {
+            if (stat == Stat.Damage)
+            {
+                yield return _currentWeapon.value.GetDamage();
+            }
+        }
+
+        public IEnumerable<float> GetPercentageModifiers(Stat stat)
+        {
+            if (stat == Stat.Damage)
+            {
+                yield return _currentWeapon.value.GetPercentageBonus();
+            }
+        }
+
         // Animation Event
         public void Hit()
         {
             if (_target == null) return;
 
             var damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
-            if (_currentWeapon.HasProjectile())
+            if (_currentWeapon.value.HasProjectile())
             {
-                _currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, _target, gameObject, damage);
+                _currentWeapon.value.LaunchProjectile(rightHandTransform, leftHandTransform, _target, gameObject, damage);
             }
             else
             {
@@ -128,7 +162,7 @@ namespace Combat
 
         public object CaptureState()
         {
-            return _currentWeapon.name;
+            return _currentWeapon.value.name;
         }
 
         public void RestoreState(object state)

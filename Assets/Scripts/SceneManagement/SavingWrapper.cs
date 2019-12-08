@@ -8,16 +8,19 @@ namespace SceneManagement
     {
         [SerializeField] private float fadeInTime = .2f;
         private const string DefaultSaveFile = "save";
-        private SavingSystem _savingSystem;
+
+        private void Awake()
+        {
+            //StartCoroutine(LoadLastScene());
+        }
 
         private IEnumerator Start()
         {
-            _savingSystem = GetComponent<SavingSystem>();
+            yield return GetComponent<SavingSystem>().LoadLastScene(DefaultSaveFile);
             
             Fader fader = FindObjectOfType<Fader>();
-            
             fader.FadeOutImmediate();
-            yield return _savingSystem.LoadLastScene(DefaultSaveFile);
+
             yield return fader.FadeIn(fadeInTime);
         }
 
@@ -34,17 +37,17 @@ namespace SceneManagement
         
         public void Save()
         {
-            _savingSystem.Save(DefaultSaveFile);
+            GetComponent<SavingSystem>().Save(DefaultSaveFile);
         }
 
         public void Load()
         {
-            _savingSystem.Load(DefaultSaveFile);
+            GetComponent<SavingSystem>().Load(DefaultSaveFile);
         }
 
         public void Delete()
         {
-            _savingSystem.Delete(DefaultSaveFile);
+            GetComponent<SavingSystem>().Delete(DefaultSaveFile);
         }
     }
 

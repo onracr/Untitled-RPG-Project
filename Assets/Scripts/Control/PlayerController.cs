@@ -17,7 +17,7 @@ namespace Control
         private Health _health;
         
 
-        private void Start() 
+        private void Awake() 
         {
             _mover = GetComponent<Mover>();
             _fighter = GetComponent<Fighter>();

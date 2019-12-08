@@ -16,7 +16,7 @@ namespace Movement
       private ActionScheduler _actionScheduler;
       private Health _health;
 
-      private void Start()
+      private void Awake()
       {
          _navMeshAgent = GetComponent<NavMeshAgent>();
          _animator = GetComponent<Animator>();
