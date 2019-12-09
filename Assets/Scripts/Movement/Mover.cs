@@ -64,10 +64,10 @@ namespace Movement
       public void RestoreState(object state)
       {
          var position = (SerializableVector3) state;
-         GetComponent<NavMeshAgent>().enabled = false;
+         _navMeshAgent.enabled = false;
          transform.position = position.ToVector();
-         GetComponent<NavMeshAgent>().enabled = true;
-         GetComponent<ActionScheduler>().CancelCurrentAction();
+         _navMeshAgent.enabled = true;
+         _actionScheduler.CancelCurrentAction();
       }
    }
 }

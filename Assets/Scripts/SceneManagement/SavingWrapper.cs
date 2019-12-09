@@ -11,10 +11,10 @@ namespace SceneManagement
 
         private void Awake()
         {
-            //StartCoroutine(LoadLastScene());
+            StartCoroutine(LoadLastScene());
         }
 
-        private IEnumerator Start()
+        private IEnumerator LoadLastScene()
         {
             yield return GetComponent<SavingSystem>().LoadLastScene(DefaultSaveFile);
             

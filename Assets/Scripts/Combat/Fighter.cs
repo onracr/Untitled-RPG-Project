@@ -63,16 +63,17 @@ namespace Combat
                 AttackBehaviour();
             }
         }
-        public void EquipWeapon(Weapon weapon)
-        {
-            _currentWeapon.value = weapon;
-            AttachWeapon(weapon);
-        }
 
         private void AttachWeapon(Weapon weapon)
         {
             var animator = GetComponent<Animator>();
             weapon.Spawn(rightHandTransform, leftHandTransform, animator);
+        }
+
+        public void EquipWeapon(Weapon weapon)
+        {
+            _currentWeapon.value = weapon;
+            AttachWeapon(weapon);
         }
 
         public Health GetTarget()

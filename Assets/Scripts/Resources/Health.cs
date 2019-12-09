@@ -113,8 +113,8 @@ namespace Resources
 
         public void RestoreState(object state)
         {
-            _health.value = (float) state;
-            
+            _health.value = (float)state;
+
             if (_health.value <= 0)
                 Die();
         }
