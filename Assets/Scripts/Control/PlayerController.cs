@@ -1,8 +1,10 @@
+using System;
 using Combat;
 using Core;
 using Movement;
 using Resources;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Control
 {
@@ -10,7 +12,16 @@ namespace Control
     {
         // References
         [SerializeField] private new Camera camera = null;
+        [SerializeField] private CursorMapping[] cursorMappings = null;
         
+        [System.Serializable]
+        struct CursorMapping
+        {
+            public CursorType type;
+            public Texture2D texture;
+            public Vector2 hotspot;
+        }
+
         // Cached Reference
         private Mover _mover;
         private Fighter _fighter;
@@ -26,40 +37,87 @@ namespace Control
 
         private void Update()
         {
-            if (_health.IsDead()) return;
-            if (CombatInteraction()) return;
+            if (InteractWithUI()) return;
+            if (_health.IsDead())
+            {
+                SetCursor(CursorType.None);
+                return;
+            }
+            if (InteractWithComponent()) return;
             if (MovementInteraction()) return;
+
+            SetCursor(CursorType.None);
         }
 
-        private bool CombatInteraction()
+        private bool InteractWithComponent()
         {
-            var hits = Physics.RaycastAll(GetMouseRay());
+            var hits = RaycastAllSorted();
 
             foreach (var hit in hits)
             {
-                var target = hit.transform.GetComponent<CombatTarget>();
-                if (target == null) continue;
-
-                if (!_fighter.CanAttack(target.gameObject)) continue;
-
-                if (Input.GetMouseButtonDown(0))
+                IRaycastable[] raycastables = hit.transform.GetComponents<IRaycastable>();
+                foreach (var raycastable in raycastables)
                 {
-                    _fighter.AttackTo(target.gameObject);
+                    if (raycastable.HandleRaycast(this))
+                    {
+                        SetCursor(raycastable.GetCursorType());
+                        return true;
+                    }
+                      
                 }
-                return true;
             }
             return false;
         }
 
+        private RaycastHit[] RaycastAllSorted()
+        {
+            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+            float[] distances = new float[hits.Length];
+
+            for (var i = 0; i < hits.Length; i++)
+            {
+                distances[i] = hits[i].distance;
+            }
+            Array.Sort(distances, hits);
+
+            return hits;
+        }
+
+        private bool InteractWithUI()
+        {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                SetCursor(CursorType.UI);
+                return true;
+            }
+            return false;
+        }
         private bool MovementInteraction()
         {
             if (Physics.Raycast(GetMouseRay(), out var hit)) {
                 if (Input.GetMouseButton(0)) {
                     _mover.StartMoveAction(hit.point, 1f);
                 }
+                SetCursor(CursorType.Movement);
                 return true;
             }
             return false;
+        }
+
+        private void SetCursor(CursorType type)
+        {
+            CursorMapping mapping = GetCursorMapping(type);
+            Cursor.SetCursor(mapping.texture, mapping.hotspot, CursorMode.Auto);
+        }
+
+        private CursorMapping GetCursorMapping(CursorType type)
+        {
+            foreach (var mapping in cursorMappings)
+            {
+                if (mapping.type == type)
+                    return mapping;
+            }
+            return cursorMappings[0];
         }
 
         private Ray GetMouseRay()
