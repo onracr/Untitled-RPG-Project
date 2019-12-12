@@ -4,18 +4,23 @@ using GameDevTV.Utils;
 using Saving;
 using Stats;
 using UnityEngine;
+using UnityEngine.Events;
 
-namespace Resources
+namespace Attributes
 {
     public class Health : MonoBehaviour, ISaveable
     {
         [SerializeField] private float regenerationPercentage = 70f;
+        [SerializeField] private TakeDamageEvent takeDamage;
         
-        private LazyValue<float> _health;
+        [System.Serializable]
+        public class TakeDamageEvent : UnityEvent<float>
+        { }
 
         // Cached Reference
         private Animator _animator;
         private ActionScheduler _actionScheduler;
+        private LazyValue<float> _health;
         
         private bool _isDead = false;
         
@@ -58,6 +63,10 @@ namespace Resources
                 Die();
                 AwardExperience(instigator);
             }
+            else
+            {
+                takeDamage?.Invoke(amount);
+            }
         }
 
          public float GetHealthPoints()
@@ -73,7 +82,12 @@ namespace Resources
 
         public float GetPercentage()
         {
-            return 100 * (_health.value / GetComponent<BaseStats>().GetStat(Stat.Health));
+            return 100 * GetFraction();
+        }
+
+        public float GetFraction()
+        {
+            return _health.value / GetComponent<BaseStats>().GetStat(Stat.Health);
         }
 
         private void Die()

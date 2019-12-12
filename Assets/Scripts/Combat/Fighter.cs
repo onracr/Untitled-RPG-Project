@@ -1,7 +1,7 @@
 using Core;
 using UnityEngine;
 using Movement;
-using Resources;
+using Attributes;
 using Saving;
 using Stats;
 using System.Collections.Generic;

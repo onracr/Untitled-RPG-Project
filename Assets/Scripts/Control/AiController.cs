@@ -4,7 +4,7 @@ using Combat;
 using Core;
 using GameDevTV.Utils;
 using Movement;
-using Resources;
+using Attributes;
 using UnityEngine;
 
 namespace Control

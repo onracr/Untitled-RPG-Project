@@ -1,5 +1,5 @@
 ﻿using Core;
-using Resources;
+using Attributes;
 using Saving;
 using UnityEngine;
 using UnityEngine.AI;

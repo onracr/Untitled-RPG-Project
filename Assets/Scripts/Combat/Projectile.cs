@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Control;
 using Core;
-using Resources;
+using Attributes;
 using UnityEditorInternal;
 using UnityEngine;
 

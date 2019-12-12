@@ -1,7 +1,7 @@
 using System;
 using Combat;
 using Movement;
-using Resources;
+using Attributes;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
