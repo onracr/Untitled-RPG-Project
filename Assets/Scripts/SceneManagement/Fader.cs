@@ -9,6 +9,7 @@ namespace SceneManagement
     {
         private CanvasGroup _canvasGroup;
         private float _alphaValue;
+        private Coroutine _currentActiveFade = null;
 
         private void Awake()
         {
@@ -20,23 +21,33 @@ namespace SceneManagement
             _canvasGroup.alpha = 1;
         }
         
-        public IEnumerator FadeOut(float time)
+        public Coroutine FadeOut(float time)
         {
-            while (_canvasGroup.alpha < 1)
-            {
-                _canvasGroup.alpha += Time.deltaTime / time;
-                yield return null;
-            }
+            return Fade(1, time);
         }
 
-        public IEnumerator FadeIn(float time)
+       
+        public Coroutine FadeIn(float time)
         {
-            while (_canvasGroup.alpha > 0)
+            return Fade(0, time);
+        }
+
+        public Coroutine Fade(float target, float time)
+        {
+            if (_currentActiveFade != null)
+                StopCoroutine(_currentActiveFade);
+
+            _currentActiveFade = StartCoroutine(FadeRoutine(target, time));
+            return _currentActiveFade;
+        }
+
+        private IEnumerator FadeRoutine(float target, float time)
+        {
+            while (!Mathf.Approximately(_canvasGroup.alpha, target))
             {
-                _canvasGroup.alpha -= Time.deltaTime / time;
+                _canvasGroup.alpha = Mathf.MoveTowards(_canvasGroup.alpha, target, Time.deltaTime / time);
                 yield return null;
             }
         }
     }
-
 }

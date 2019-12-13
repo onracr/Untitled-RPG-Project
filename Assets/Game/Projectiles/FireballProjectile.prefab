@@ -4905,6 +4905,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireballProjectile
       objectReference: {fileID: 0}
+    - target: {fileID: 971741387846936172, guid: 9a07686f854bd1447bee6634365d760b,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: be04e3f4e348d08438b4ce2e92a586d2, type: 3}
+    - target: {fileID: 1025318320808751655, guid: 9a07686f854bd1447bee6634365d760b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3866225534243651220, guid: 9a07686f854bd1447bee6634365d760b,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: da0093ebe4323b846a8f67e40229df09, type: 3}
     - target: {fileID: 5359449107910611844, guid: 9a07686f854bd1447bee6634365d760b,
         type: 3}
       propertyPath: m_LocalPosition.x

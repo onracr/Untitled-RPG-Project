@@ -12,6 +12,7 @@ namespace Attributes
     {
         [SerializeField] private float regenerationPercentage = 70f;
         [SerializeField] private TakeDamageEvent takeDamage;
+        [SerializeField] private UnityEvent onDie;
         
         [System.Serializable]
         public class TakeDamageEvent : UnityEvent<float>
@@ -54,12 +55,11 @@ namespace Attributes
 
          public void TakeDamage(GameObject instigator, float amount)
         {
-            print(gameObject.name + " took damage:" + amount);
-            
             _health.value = Mathf.Max(_health.value - amount, 0);
 
             if (_health.value == 0)
             {
+                onDie?.Invoke();
                 Die();
                 AwardExperience(instigator);
             }
@@ -67,6 +67,11 @@ namespace Attributes
             {
                 takeDamage?.Invoke(amount);
             }
+        }
+
+        public void Heal(float healAmount)
+        {
+            _health.value = Mathf.Min(GetMaxHealthPoints(), _health.value + healAmount);
         }
 
          public float GetHealthPoints()

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Control;
 using Saving;
 using UnityEngine;
 using UnityEngine.AI;
@@ -37,13 +38,17 @@ namespace SceneManagement
 
             var fader = FindObjectOfType<Fader>();
             var savingWrapper = FindObjectOfType<SavingWrapper>();
+            var playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+            playerController.enabled = false;
             
             yield return fader.FadeOut(fadeOutTime);
             
             savingWrapper.Save();
             
             yield return SceneManager.LoadSceneAsync(sceneToLoad);
-            
+            var newPlayerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+            newPlayerController.enabled = false;
+
             savingWrapper.Load();
 
             Portal otherPortal = GetOtherPortal();
@@ -52,8 +57,9 @@ namespace SceneManagement
             savingWrapper.Save();
             
             yield return new WaitForSeconds(fadeWaitTime);
-            yield return fader.FadeIn(fadeInTime);
-            
+            fader.FadeIn(fadeInTime);
+
+            newPlayerController.enabled = true;
             Destroy(gameObject);
         }
 

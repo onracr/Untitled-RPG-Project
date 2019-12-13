@@ -6,6 +6,7 @@ using Core;
 using Attributes;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Combat
 {
@@ -17,6 +18,8 @@ namespace Combat
         [SerializeField] private float lifeAfterImpact = 2f;
         [SerializeField] private GameObject hitEffect = null;
         [SerializeField] private GameObject[] destroyOnHit = null;
+        [SerializeField] private UnityEvent onHit;
+
 
         private GameObject _instigator = null;
         private Health _target = null;
@@ -63,7 +66,8 @@ namespace Combat
             if (_target.IsDead()) return;
             _target.TakeDamage(_instigator, _damage);
 
-            //projectileSpeed = 0f; TODO try why is this necessary
+            projectileSpeed = 0f;
+            onHit?.Invoke();
             
             if (hitEffect)
             {
