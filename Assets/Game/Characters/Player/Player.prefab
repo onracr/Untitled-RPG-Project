@@ -44,7 +44,7 @@ MonoBehaviour:
     texture: {fileID: 2800000, guid: f8c873f1e53e83f4aabf342d6be1dfc3, type: 3}
     hotspot: {x: 0, y: 0}
   maxNavMeshProjectionDistance: 1
-  maxNavPathLength: 20
+  raycastRadius: 0.2
 --- !u!114 &5559135192948964075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,10 +75,25 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2966591683921429897, guid: d959ff2881043c342ac9514f9478714c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4273700044935683188, guid: d959ff2881043c342ac9514f9478714c,
         type: 3}
       propertyPath: uniqueIdentifier
       value: player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7275182196013692651, guid: d959ff2881043c342ac9514f9478714c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7902606045241608913, guid: d959ff2881043c342ac9514f9478714c,
+        type: 3}
+      propertyPath: maxNavPathLength
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7902606045241608914, guid: d959ff2881043c342ac9514f9478714c,
         type: 3}

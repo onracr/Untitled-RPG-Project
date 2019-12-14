@@ -53,7 +53,7 @@ namespace Combat
             if (_target == null) return;
             if (_target.IsDead()) return;
             
-            if (!IsInRange())
+            if (!IsInRange(_target.transform))
             {
                 _mover.MoveTo(_target.transform.position, 1f);
             }
@@ -95,9 +95,9 @@ namespace Combat
         }
 
 
-        private bool IsInRange()
+        private bool IsInRange(Transform targetTransform)
         {
-            return Vector3.Distance(transform.position, _target.transform.position) <= _currentWeaponConfig.GetRange();
+            return Vector3.Distance(transform.position, targetTransform.position) <= _currentWeaponConfig.GetRange();
         }
 
         public void AttackTo(GameObject target)
@@ -109,6 +109,11 @@ namespace Combat
         public bool CanAttack(GameObject target)
         {
             if (target == null) return false;
+            if (!_mover.CanMoveTo(target.transform.position) && !IsInRange(target.transform)) 
+            {
+                return false;
+            }
+
             Health targetToTest = target.GetComponent<Health>();
             return targetToTest != null && !targetToTest.IsDead();
         }

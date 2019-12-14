@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections;
-using Combat;
+﻿using Combat;
 using Core;
 using GameDevTV.Utils;
 using Movement;
 using Attributes;
 using UnityEngine;
+using System;
 
 namespace Control
 {
@@ -13,8 +12,7 @@ namespace Control
     {
         [SerializeField] private PatrolPath patrolPath = null;
         [SerializeField] private float chaseDistance = 5f;
-        [SerializeField] private float timeSinceLastSawPlayer = Mathf.Infinity;
-        [SerializeField] private float timeSinceArrivedAtWayPoint = Mathf.Infinity;
+        [SerializeField] private float shoutDistance = 5f;
         [SerializeField] private float wayPointTolerance = 1f;
         [SerializeField] private float wayPointDwellTime = 2f;
         [Range(0,1)]
@@ -28,7 +26,11 @@ namespace Control
         private ActionScheduler _actionScheduler;
 
         private const float SuspicionTime = 3f;
+        private const float AggroCooldownTime = 2f;
         private int _currentWayPointIndex = 0;
+        private float _timeSinceArrivedAtWayPoint = Mathf.Infinity;
+        private float _timeSinceLastSawPlayer = Mathf.Infinity;
+        private float _timeSinceAggrevated = Mathf.Infinity;
         private LazyValue<Vector3> _guardingPosition;
 
         private void Awake()
@@ -62,31 +64,53 @@ namespace Control
 
         private void UpdateTimers()
         {
-            timeSinceLastSawPlayer += Time.deltaTime;
-            timeSinceArrivedAtWayPoint += Time.deltaTime;
+            _timeSinceLastSawPlayer += Time.deltaTime;
+            _timeSinceArrivedAtWayPoint += Time.deltaTime;
+            _timeSinceAggrevated += Time.deltaTime;
         }
 
         private void ChasingBehaviour()
         {
-            if (DistanceToPlayer() < chaseDistance && _fighter.CanAttack(_player))
-            {
+            if (IsAggrevated() && _fighter.CanAttack(_player)) {
                 AttackBehaviour();
             }
-            else if (timeSinceLastSawPlayer < SuspicionTime)
-            {
+            else if (_timeSinceLastSawPlayer < SuspicionTime) {
                 SuspicionBehaviour();
             }
-            else
-            {
+            else {
                 PatrolBehaviour();
             }
+        }
+
+        private bool IsAggrevated()
+        {
+            return (DistanceToPlayer() < chaseDistance || _timeSinceAggrevated < AggroCooldownTime);
+        }
+
+        public void Aggrevate()
+        {
+            _timeSinceAggrevated = 0;
         }
 
         private void AttackBehaviour()
         {
             _fighter.AttackTo(_player);
-            timeSinceLastSawPlayer = 0;
-            print(timeSinceLastSawPlayer);
+            _timeSinceLastSawPlayer = 0;
+
+            AggrevateNearByEnemies();
+        }
+
+        private void AggrevateNearByEnemies()
+        {
+            RaycastHit[] hits = Physics.SphereCastAll(transform.position, shoutDistance, Vector3.up, 0f);
+
+            foreach (var hit in hits)
+            {
+                var aiController = hit.transform.GetComponent<AiController>();
+                if (aiController == null) continue;
+                
+                aiController.Aggrevate();
+            }
         }
 
         private void SuspicionBehaviour()
@@ -101,13 +125,13 @@ namespace Control
             {
                 if (IsAtWayPoint())
                 { 
-                    timeSinceArrivedAtWayPoint = 0;
+                    _timeSinceArrivedAtWayPoint = 0;
                     CycleWayPoint();
                 }
                 nextPosition = GetCurrentWayPoint();
             }
 
-            if (timeSinceArrivedAtWayPoint > wayPointDwellTime)
+            if (_timeSinceArrivedAtWayPoint > wayPointDwellTime)
             {
                 _mover.StartMoveAction(nextPosition, patrolSpeedFraction); // starting movement action, cancels fighting action
             }

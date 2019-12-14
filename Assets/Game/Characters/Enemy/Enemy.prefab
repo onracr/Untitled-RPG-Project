@@ -54,13 +54,43 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2723528145855352631, guid: d959ff2881043c342ac9514f9478714c,
         type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2723528145855352631, guid: d959ff2881043c342ac9514f9478714c,
+        type: 3}
       propertyPath: health
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2723528145855352631, guid: d959ff2881043c342ac9514f9478714c,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2723528145855352631, guid: d959ff2881043c342ac9514f9478714c,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2723528145855352631, guid: d959ff2881043c342ac9514f9478714c,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1463336677136957017}
+    - target: {fileID: 2723528145855352631, guid: d959ff2881043c342ac9514f9478714c,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: Aggrevate
+      objectReference: {fileID: 0}
+    - target: {fileID: 2723528145855352631, guid: d959ff2881043c342ac9514f9478714c,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2966591683921429897, guid: d959ff2881043c342ac9514f9478714c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7902606045241608913, guid: d959ff2881043c342ac9514f9478714c,
         type: 3}
